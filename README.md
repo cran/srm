@@ -2,7 +2,7 @@
 #### Structural Equation Modeling for the Social Relations Model
 
 
-If you use `srm` and have suggestions for improvement or have found bugs, please email me at robitzsch@ipn.uni-kiel.de.
+If you use `srm` and have suggestions for improvement or have found bugs, please email me at robitzsch@leibniz-ipn.de.
 
 #### Manual
 
