@@ -1,11 +1,11 @@
 Package: srm
 Type: Package
 Title: Structural Equation Modeling for the Social Relations Model
-Version: 0.3-6
-Date: 2019-12-15 17:50:48
+Version: 0.4-26
+Date: 2022-11-03 10:20:31
 Author: Steffen Nestler [aut], Alexander Robitzsch [aut, cre], 
         Oliver Luedtke [aut]
-Maintainer: Alexander Robitzsch <robitzsch@leibniz-ipn.de>
+Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
 Description: 
     Provides functionality for structural equation modeling for
     the social relations model (Kenny & La Voie, 1984;
@@ -23,6 +23,6 @@ License: GPL (>= 2)
 URL: https://github.com/alexanderrobitzsch/srm,
         https://sites.google.com/site/alexanderrobitzsch2/software
 NeedsCompilation: yes
-Packaged: 2019-12-15 16:53:00 UTC; sunpn563
+Packaged: 2022-11-03 09:21:57 UTC; sunpn563
 Repository: CRAN
-Date/Publication: 2019-12-15 17:30:02 UTC
+Date/Publication: 2022-11-03 10:00:02 UTC

@@ -1,5 +1,5 @@
 ## File Name: SRM_PRINT_SUMMARY_LAYOUT2.R
-## File Version: 0.01
+## File Version: 0.09
 
 SRM_PRINT_SUMMARY_LAYOUT2 <- function(object, digits)
 {
@@ -28,13 +28,33 @@ SRM_PRINT_SUMMARY_LAYOUT2 <- function(object, digits)
     cat("Optimization function","=", res_opt$opt_label, "\n")
     cat("Maximum absolute value of relative gradient", "=", object$grad_maxabs, "\n")
 
+    cat("\nINPUT DATA\n\n")
+    cat("Number of groups","=", object$ngroups, "\n")
+    cat("Number of Round-Robin groups","=", object$nrr, "\n")
+    cat("Number of persons","=", object$npersons, "\n")
+    cat("Number of dyads","=", object$ndyads, "\n")
+
     #* display parameter table
     cat("\nESTIMATED PARAMETERS\n\n")
     # select columns
-    sel <- c("index", "group", "lhs", "op", "rhs", "mat", "fixed", "est", "se", "lower")
+    sel <- c("index", "group", "lhs", "op", "rhs", "mat", "row", "col",
+                    "fixed", "est", "se", "lower")
     obji <- parm.table
     obji <- obji[, sel]
     round_vars <- c("est","se")
     obji[,round_vars] <- round( obji[,round_vars], digits)
     print(obji)
+
+    #*** model implied covariance matrices
+    cat("\nMODEL IMPLIED COVARIANCE MATRICES\n")
+    for (gg in 1:object$ngroups){
+        cat(paste0("\nGroup ", gg, ", Person Level\n\n"))
+        obji <- object$sigma[["U"]][[gg]]
+        print(round(obji, digits))
+        cat(paste0("\nGroup ", gg, ", Dyad Level\n\n"))
+        obji <- object$sigma[["D"]][[gg]]
+        print(round(obji, digits))
+    }
+
+
 }

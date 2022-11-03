@@ -1,15 +1,14 @@
 ## File Name: SRM_PRINT_OPTINFOS.R
-## File Version: 0.07
+## File Version: 0.12
 
 SRM_PRINT_OPTINFOS <- function( object = NULL,
                                 digits = 3L )
-
 {
 
      #- get part of result_object that containts optimizer infos
      srm_optimizer_info <- object$res_opt
      srm_yindex <- object$data_list[[1]]$y_index
-     
+
      #- convergence info:
      conv_info <- "converged."
      if ( !srm_optimizer_info$converged ) { conv_info <- "NOT converged." }
@@ -24,7 +23,10 @@ SRM_PRINT_OPTINFOS <- function( object = NULL,
                 "Deviance: ",
                 "",
                 "Number of groups: ",
-                "Number of round-robin groups: ")
+                "Number of round-robin groups: ",
+                "Number of persons: ",
+                "Number of dyads: "
+                )
 
      values <- c(srm_optimizer_info$optimizer,
                  conv_info,
@@ -35,7 +37,8 @@ SRM_PRINT_OPTINFOS <- function( object = NULL,
                  -2*round( srm_optimizer_info$value, digits),
                  "",
                  length( unique( srm_yindex$group.var ) ),
-                 length( unique( srm_yindex$Group ) ))
+                 length( unique( srm_yindex$Group ) ),
+                 object$npersons, object$ndyads     )
 
      #- print texts
      char.format <- paste("%3s%-", 14, "s", sep = "")
@@ -44,7 +47,7 @@ SRM_PRINT_OPTINFOS <- function( object = NULL,
      for ( i in 1:length( texts ) ) {
          tmp <- paste( sprintf( char.format, "", texts[i] ),
                        values[i],
-                       sep = "" )                       
+                       sep = "" )
          #message(tmp)
          cat(tmp)
          cat("\n")
